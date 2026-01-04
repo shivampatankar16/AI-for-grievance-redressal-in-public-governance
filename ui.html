@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>महाशिकायत एआय - MahaShikayat AI Portal | PS12 RBU</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-orange: #F97316;
+            --secondary-blue: #1E40AF;
+            --success-green: #10B981;
+            --danger-red: #EF4444;
+            --warning-yellow: #F59E0B;
+            --light-bg: #F8FAFC;
+            --white: #FFFFFF;
+            --text-dark: #1E293B;
+            --text-light: #64748B;
+            --marathi-font: 'Noto Sans Devanagari', sans-serif;
+            --glass-bg: rgba(255, 255, 255, 0.9);
+            --shadow-glow: 0 10px 30px rgba(249, 115, 22, 0.3);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--light-bg) 0%, #E2E8F0 50%, #CBD5E1 100%);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: var(--glass-bg);
+            min-width: 220px;
+            box-shadow: var(--shadow-glow);
+            border-radius: 15px;
+            z-index: 1001;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(249, 115, 22, 0.2);
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: var(--text-dark);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s ease;
+            border-radius: 10px;
+            margin: 4px;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(249, 115, 22, 0.2);
+            color: var(--primary-orange);
+            transform: translateX(5px);
+        }
+
+        /* Header Navigation */
+        header {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-glow), 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        nav a:hover {
+            background: var(--primary-orange);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .search-container input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 2px solid rgba(249, 115, 22, 0.2);
+            border-radius: 25px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+        }
+
+        .search-container input:focus {
+            outline: none;
+            border-color: var(--primary-orange);
+            box-shadow: 0 0 15px rgba(249, 115, 22, 0.3);
+        }
+
+        .search-container button {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--primary-orange), var(--secondary-blue));
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .search-container button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .language-selector select {
+            padding: 8px 12px;
+            border: 2px solid rgba(249, 115, 22, 0.2);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .auth-buttons button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        #loginBtn {
+            background: rgba(0, 64, 96, 0.8);
+            color: white;
+        }
+
+        #signupBtn {
+            background: linear-gradient(135deg, var(--primary-orange), var(--secondary-blue));
+            color: white;
+        }
+
+        .auth-buttons button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-orange), var(--secondary-blue));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-glow);
+            animation: pulse-glow 2s infinite;
+        }
+
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                box-shadow: var(--shadow-glow);
+            }
+
+            50% {
+                box-shadow: 0 0 30px rgba(249, 115, 22, 0.6);
+            }
+        }
+
+        .logo-marathi {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary-orange), var(--secondary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: var(--marathi-font);
+        }
+
+        .logo-english {
+            font-size: 1.3rem;
+            color: var(--primary-orange);
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Rest of existing styles remain exactly the same */
+        .bg-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, var(--primary-orange), transparent);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--primary-orange), var(--secondary-blue));
+            color: white;
+            margin-bottom: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-family: var(--marathi-font);
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            animation: heroFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes heroFloat {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .voice-btn,
+        .text-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 1.2rem 2.5rem;
+            background: var(--white);
+            color: var(--primary-orange);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            margin: 0 1rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: var(--shadow-glow);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+        }
+
+        .voice-btn::before,
+        .text-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s;
+        }
+
+        .voice-btn:hover::before,
+        .text-btn:hover::before {
+            left: 100%;
+        }
+
+        .voice-btn:hover,
+        .text-btn:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .stat-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-glow);
+            border: 1px solid rgba(249, 115, 22, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(249, 115, 22, 0.4);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary-orange), var(--secondary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+        }
+
+        /* Complaint Form */
+        .complaint-form {
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: var(--shadow-glow);
+            margin-bottom: 4rem;
+            border: 1px solid rgba(249, 115, 22, 0.2);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 1.2rem;
+            border: 2px solid rgba(249, 115, 22, 0.2);
+            border-radius: 15px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-orange);
+            box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .voice-input {
+            border: 3px dashed var(--primary-orange);
+            text-align: center;
+            cursor: pointer;
+            padding: 2rem;
+            border-radius: 15px;
+            transition: all 0.4s ease;
+            background: rgba(254, 243, 199, 0.3);
+        }
+
+        .voice-input:hover {
+            background: rgba(254, 243, 199, 0.6);
+            transform: scale(1.02);
+        }
+
+        .voice-input.recording {
+            background: rgba(254, 226, 226, 0.8);
+            border-color: var(--danger-red);
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Status Cards */
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .status-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            padding: 2.5rem;
+            border-radius: 25px;
+            box-shadow: var(--shadow-glow);
+            border-left: 6px solid var(--primary-orange);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .status-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-orange), var(--secondary-blue));
+        }
+
+        .status-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .status-card.priority-5 {
+            border-left-color: var(--danger-red);
+        }
+
+        .status-card.priority-4 {
+            border-left-color: var(--success-green);
+        }
+
+        .status-card.priority-3 {
+            border-left-color: var(--secondary-blue);
+        }
+
+        .priority-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .priority-5 {
+            background: var(--danger-red);
+        }
+
+        .priority-4 {
+            background: var(--success-green);
+        }
+
+        .priority-3 {
+            background: var(--secondary-blue);
+        }
+
+        .status-badge {
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .status-resolved {
+            background: var(--success-green);
+            color: white;
+        }
+
+        .status-in-progress {
+            background: var(--warning-yellow);
+            color: var(--text-dark);
+        }
+
+        /* Dashboard Table */
+        .dashboard {
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: var(--shadow-glow);
+            overflow-x: auto;
+            border: 1px solid rgba(249, 115, 22, 0.2);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background: linear-gradient(135deg, var(--primary-orange), var(--secondary-blue));
+            color: white;
+            padding: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        tr {
+            transition: all 0.3s ease;
+        }
+
+        tr:hover {
+            background: linear-gradient(135deg, #FEF3C7, #FEE2E2);
+            transform: scale(1.01);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .search-container {
+                max-width: 100%;
+                order: 3;
+            }
+
+            nav {
+                order: 2;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .auth-buttons {
+                order: 4;
+            }
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700&display=swap');
+    </style>
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="bg-particles" id="particles"></div>
+
+    <!-- Header with New Navigation -->
+    <header>
+        <div class="header-content">
+            <!-- Logo -->
+            <div class="logo">
+                <div class="logo-icon">🤖</div>
+                <div>
+                    <div class="logo-marathi">महाशिकायत</div>
+                    <div class="logo-english">AI Portal</div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav>
+                <div class="dropdown">
+                    <a href="#"
+                        style="color: var(--text-dark); font-weight: 600; padding: 8px 16px; border-radius: 20px; background: rgba(255,255,255,0.5);">Departments</a>
+                    <div class="dropdown-content">
+                        <a href="waterdepartment.html">Water Supply</a>
+                        <a href="electricity.html">Electricity</a>
+                        <a href="Roads.html">Roads</a>
+                        <a href="Garbadge.html">Garbage</a>
+                        <a href="Dranage.html">Drainage</a>
+                        <a href="streetlight.html">Street Lights</a>
+                        <a href="healthcare.html">Healthcare</a>
+                    </div>
+                </div>
+                <a href="AnalyticsDashboard.html">Analytics Dashboard</a>
+                <a href="citizenportal.html">Citizen Portal</a>
+                <a href="transparencyReport.html">Transparency Reports</a>
+                <a href="contacts.html">Contact</a>
+
+            </nav>
+
+            <!-- Search bar -->
+            <div class="search-container">
+                <input type="text" placeholder="Search complaints..." />
+                <button>🔍 Search</button>
+            </div>
+
+            <!-- Language Selector -->
+            <div class="language-selector">
+                <label for="language" style="color: var(--text-dark); font-weight: 600; margin-right: 5px;">भाषा /
+                    Language:</label>
+                <select id="language">
+                    <option value="mr">मराठी</option>
+                    <option value="hi">हिंदी</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+
+            <!-- Login & Sign Up -->
+            <div class="auth-buttons">
+                <button id="loginBtn" onclick="location.href='login.html'">Login</button>
+                <button id="signupBtn" onclick="location.href='signup.html'">Sign Up</button>
+            </div>
+
+
+            <!--<button id="signupBtn">Sign Up</button>-->
+        </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>तुमची शिकायत, ३ दिवसांत निराकरण</h1>
+            <p class="hero-subtitle">AI GRIEVANCE REDRESSAL | Nagpur</p>
+            <div>
+                <button class="voice-btn" id="voiceBtn" onclick="location.href='voicecomplate.html'">Voice Complaint (मराठी/हिंदी)</button>
+         
+                </button>
+                <button class="text-btn" id="textBtn"
+        onclick="location.href='textcomplate.html'">
+    ✍️ Text Complaint
+</button>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-number" id="totalComplaints">1,247</span>
+                <h3>कुल शिकाया</h3>
+                <p>Total Complaints</p>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" style="color: var(--success-green);" id="resolved">978</span>
+                <h3>निराकरणित</h3>
+                <p>Resolved (78%)</p>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" style="color: var(--warning-yellow);" id="avgTime">3.2</span>
+                <h3>सरासरी दिवस</h3>
+                <p>Avg Resolution Days</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Complaint Form -->
+    <section class="container">
+        <div class="complaint-form" id="complaintForm" style="display: none;">
+            <h2>🚀 नोंदवा तुमची शिकायत / Register Complaint</h2>
+            <form id="complaintFormData">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>👤 नाव / Name</label>
+                        <input type="text" id="citizenName" placeholder="Atharva Joshi" required>
+                    </div>
+                    <div class="form-group">
+                        <label>📱 फोन नंबर / Phone</label>
+                        <input type="tel" id="phone" placeholder="9876543210" required>
+                    </div>
+                    <div class="form-group">
+                        <label>🏙️ शहर / City</label>
+                        <select id="city">
+                            <option value="Nagpur">Nagpur (नागपूर)</option>
+                            <option value="Ichalkaranji">Ichalkaranji (इचलकरंजी)</option>
+                            <option value="Mumbai">Mumbai (मुंबई)</option>
+                            <option value="Pune">Pune (पुणे)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>📋 शिकायत प्रकार / Complaint Type</label>
+                        <select id="complaintType">
+                            <option value="Water">💧 पाणी / Water Supply</option>
+                            <option value="Electricity">⚡ विज / Electricity</option>
+                            <option value="Road">🛣️ रस्ता / Roads</option>
+                            <option value="Garbage">🗑️ कचरा / Garbage</option>
+                            <option value="Drainage">🌊 नाला / Drainage</option>
+                            <option value="Streetlight">💡 स्ट्रीट लाइट</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>📍 स्थान / Location</label>
+                        <input type="text" id="location" placeholder="Dhantoli Zone 3, Nagpur">
+                    </div>
+                    <div class="form-group">
+                        <label>🗣️ भाषा / Language</label>
+                        <select id="language">
+                            <option value="Marathi">मराठी</option>
+                            <option value="Hindi">हिंदी</option>
+                            <option value="English">English</option>
+                            <option value="Urdu">उर्दू</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>💬 शिकायत वर्णन / Complaint Details</label>
+                    <textarea rows="6" id="complaintText"
+                        placeholder="धंतोली मध्ये पाण्याची गळती होत आहे... Describe your issue in detail..."></textarea>
+                </div>
+                <div style="display: flex; gap: 1.5rem; justify-content: center; align-items: end; flex-wrap: wrap;">
+                    <div class="form-group" style="flex: 1; max-width: 250px;">
+                        <label>🎙️ Voice Input (AI STT)</label>
+                        <div class="voice-input" id="voiceInput">
+                            <div>🔴 Click to Record</div>
+                        </div>
+                    </div>
+                    <button type="submit" style="
+                        padding: 1.5rem 4rem; 
+                        background: linear-gradient(135deg, var(--primary-orange), var(--secondary-blue));
+                        color: white; 
+                        border: none; 
+                        border-radius: 20px; 
+                        font-size: 1.2rem; 
+                        font-weight: 800;
+                        cursor: pointer;
+                        box-shadow: var(--shadow-glow);
+                        transition: all 0.3s ease;
+                    ">
+                        🚀 सबमिट शिकायत / Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Live Status -->
+    <section class="container">
+        <h2
+            style="text-align: center; margin: 4rem 0 2.5rem 0; font-size: 2.5rem; background: linear-gradient(45deg, var(--primary-orange), var(--secondary-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            📡 लाइव्ह ट्रॅकिंग / Live Tracking
+        </h2>
+        <div class="status-grid" id="statusCards"></div>
+    </section>
+
+    <!-- Dashboard -->
+    <section class="container">
+        <div class="dashboard">
+            <h3 style="font-size: 2rem; margin-bottom: 2rem;">📊 शिकायत डॅशबोर्ड / Complaint Dashboard</h3>
+            <table id="complaintTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>नाव / Name</th>
+                        <th>शिकायत / Complaint</th>
+                        <th>स्थान / Location</th>
+                        <th>प्राथमिकता / Priority</th>
+                        <th>स्थिती / Status</th>
+                        <th>विभाग / Department</th>
+                        <th>अपेक्षित / Due Date</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <script>
+        // Enhanced sample data with 2 additional complaints
+        const sampleComplaints = [
+            { id: "GRV001", name: "Atharva Joshi", type: "पाणी गळती", location: "धंतोली झोन ३", priority: 5, status: "प्रक्रियेत", dept: "NMC Water/S.Desai", date: "2026-01-03", due: "2026-01-06" },
+            { id: "GRV002", name: "Sayali Pawar", type: "विज पुरवठा", location: "लक्ष्मी नगर झोन १", priority: 4, status: "नियुक्त", dept: "MSEDCL/A.Khan", date: "2026-01-03", due: "2026-01-07" },
+            { id: "GRV003", name: "Omkar Deshmukh", type: "रस्ता दुरुस्ती", location: "माणेवाडा वॉर्ड ३४", priority: 5, status: "✅ निराकरणित", dept: "NMC Roads/V.Pawar", date: "2026-01-02", due: "2026-01-05" },
+            { id: "GRV004", name: "Prajakta Raut", type: "कचरा संकलन", location: "नेहरू नगर वॉर्ड २७", priority: 4, status: "उच्च प्राधान्य", dept: "NMC Health/R.Joshi", date: "2026-01-03", due: "2026-01-08" },
+            { id: "GRV005", name: "Ramesh Patil", type: "स्ट्रीट लाइट बंद", location: "सारस्वत कॉलनी", priority: 4, status: "नवीन", dept: "NMC Lights/K.Singh", date: "2026-01-03", due: "2026-01-06" },
+            { id: "GRV006", name: "Sunita More", type: "नाला बंद", location: "कामठी रोड वार्ड १२", priority: 5, status: "आपत्कालीन", dept: "NMC Drainage/M.Tiwari", date: "2026-01-03", due: "2026-01-05" }
+
+        ];
+
+        let totalComplaints = sampleComplaints.length;
+        let resolvedCount = sampleComplaints.filter(c => c.status.includes('निराकरणित')).length;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function () {
+            createParticles();
+            updateStats();
+            renderStatusCards();
+            renderTable();
+
+            // Event listeners
+            document.getElementById('voiceBtn').addEventListener('click', showForm);
+            document.getElementById('textBtn').addEventListener('click', showForm);
+            document.getElementById('complaintFormData').addEventListener('submit', handleSubmit);
+            document.getElementById('voiceInput').addEventListener('click', toggleVoiceRecording);
+        });
+
+        // Background particles
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                particle.style.width = particle.style.height = (Math.random() * 8 + 2) + 'px';
+                particles.appendChild(particle);
+            }
+        }
+
+        function updateStats() {
+            document.getElementById('totalComplaints').textContent = totalComplaints;
+            document.getElementById('resolved').textContent = resolvedCount;
+            document.getElementById('avgTime').textContent = '3.2';
+        }
+
+        function showForm() {
+            document.getElementById('complaintForm').style.display = 'block';
+            document.getElementById('complaintForm').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            const formData = {
+                id: 'GRV' + (totalComplaints + 1).toString().padStart(3, '0'),
+                name: document.getElementById('citizenName').value || 'Anonymous',
+                type: document.getElementById('complaintType').value,
+                location: document.getElementById('location').value || document.getElementById('city').value,
+                priority: getPriorityScore(),
+                status: 'नवीन',
+                dept: getDepartment(),
+                date: new Date().toISOString().split('T')[0],
+                due: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+            };
+
+            sampleComplaints.unshift(formData);
+            totalComplaints++;
+            renderStatusCards();
+            renderTable();
+            updateStats();
+
+            // Enhanced success notification
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed; top: 20px; right: 20px; background: linear-gradient(135deg, var(--success-green), #059669);
+                color: white; padding: 2rem 1.5rem; border-radius: 15px; box-shadow: 0 20px 40px rgba(16,185,129,0.4);
+                font-weight: 700; z-index: 1000; transform: translateX(400px); transition: all 0.5s ease;
+            `;
+            notification.innerHTML = `✅ शिकायत नोंदवली!<br>ID: ${formData.id}<br>प्राथमिकता: ${formData.priority}<br>SMS ५ मिनिटांत येईल`;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            setTimeout(() => {
+                notification.remove();
+            }, 5000);
+
+            e.target.reset();
+        }
+
+        function getPriorityScore() {
+            const text = document.getElementById('complaintText').value.toLowerCase();
+            let score = 3;
+            if (text.match(/urgent|मृत्यु|आग|accident|मृत्यू/)) score = 5;
+            else if (text.match(/leak|गळती|outage|बंद/)) score = 4;
+            return score;
+        }
+
+        function getDepartment() {
+            const type = document.getElementById('complaintType').value;
+            const city = document.getElementById('city').value;
+            const depts = {
+                'Water': `${city === 'Nagpur' ? 'NMC' : city === 'Ichalkaranji' ? 'IMC' : 'BMC'} Water`,
+                'Electricity': 'MSEDCL',
+                'Road': `${city === 'Nagpur' ? 'NMC' : city === 'Ichalkaranji' ? 'IMC' : 'BMC'} Roads`,
+                'Garbage': `${city === 'Nagpur' ? 'NMC' : city === 'Ichalkaranji' ? 'IMC' : 'BMC'} Health`,
+                'Drainage': `${city === 'Nagpur' ? 'NMC' : city === 'Ichalkaranji' ? 'IMC' : 'BMC'} Drainage`,
+                'Streetlight': `${city === 'Nagpur' ? 'NMC' : city === 'Ichalkaranji' ? 'IMC' : 'BMC'} Lights`
+            };
+            return `${depts[type]}/Officer`;
+        }
+
+        function renderStatusCards() {
+            const highPriority = sampleComplaints.filter(c => c.priority >= 4).slice(0, 6);
+            document.getElementById('statusCards').innerHTML = highPriority.map(complaint => `
+                <div class="status-card priority-${complaint.priority}">
+                    <h3>📱 GRV${complaint.id.slice(3)} <span class="priority-badge priority-${complaint.priority}">P${complaint.priority}</span></h3>
+                    <p><strong>👤 ${complaint.name}</strong></p>
+                    <p>📍 ${complaint.location}</p>
+                    <p style="margin: 1rem 0; color: var(--text-light);">${complaint.type}</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span class="status-badge status-${complaint.status === 'निराकरणित' ? 'resolved' : 'in-progress'}">${complaint.status}</span>
+                        <span style="color: var(--text-light); font-size: 0.9rem;">${complaint.dept}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderTable() {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = sampleComplaints.map(complaint => `
+                <tr>
+                    <td><strong>${complaint.id}</strong></td>
+                    <td>${complaint.name}</td>
+                    <td>${complaint.type}</td>
+                    <td>${complaint.location}</td>
+                    <td><span class="priority-badge priority-${complaint.priority}">P${complaint.priority}</span></td>
+                    <td><span class="status-badge status-${complaint.status === 'निराकरणित' ? 'resolved' : 'in-progress'}">${complaint.status}</span></td>
+                    <td>${complaint.dept}</td>
+                    <td style="color: var(--warning-yellow); font-weight: 600;">${complaint.due}</td>
+                </tr>
+            `).join('');
+        }
+
+        let isRecording = false;
+        function toggleVoiceRecording() {
+            const voiceInput = document.getElementById('voiceInput');
+            isRecording = !isRecording;
+
+            if (isRecording) {
+                voiceInput.classList.add('recording');
+                voiceInput.innerHTML = '<div>🎙️ Recording... (AI Processing)</div>';
+                setTimeout(() => {
+                    voiceInput.classList.remove('recording');
+                    voiceInput.innerHTML = '<div>✅ Voice → Text Complete!</div>';
+                    document.getElementById('complaintText').value = 'धंतोली झोन ३ मध्ये पाण्याची गळती होत आहे. खूप गरज आहे लवकर निराकरणाची. Water leakage in Dhantoli Zone 3, urgent attention needed.';
+                    document.getElementById('city').value = 'Nagpur';
+                    document.getElementById('complaintType').value = 'Water';
+                    document.getElementById('location').value = 'Dhantoli Zone 3';
+                }, 4000);
+            }
+        }
+    </script>
+</body>
+
+</html>

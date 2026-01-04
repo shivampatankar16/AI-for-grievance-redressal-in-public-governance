@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Total Complaints Dashboard | महाशिकायत AI</title>
+
+<style>
+:root {
+  --primary-orange: #F97316;
+  --secondary-blue: #1E40AF;
+  --success-green: #10B981;
+  --warning-yellow: #F59E0B;
+  --danger-red: #EF4444;
+  --glass-bg: rgba(255,255,255,0.9);
+  --shadow-glow: 0 15px 40px rgba(249,115,22,0.35);
+  --text-dark: #1E293B;
+  --text-light: #64748B;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #F8FAFC, #CBD5E1);
+}
+
+/* Layout */
+.container {
+  max-width: 1300px;
+  margin: auto;
+  padding: 4rem 1.5rem;
+}
+
+/* Title */
+.page-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-title h1 {
+  font-size: 2.8rem;
+  background: linear-gradient(45deg, var(--primary-orange), var(--secondary-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.page-title p {
+  color: var(--text-light);
+}
+
+/* Stats */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(25px);
+  border-radius: 25px;
+  padding: 2.5rem;
+  box-shadow: var(--shadow-glow);
+  border: 1px solid rgba(249,115,22,0.25);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.card h2 {
+  font-size: 1.3rem;
+}
+
+.metric {
+  font-size: 2.8rem;
+  font-weight: 800;
+}
+
+.blue { color: var(--secondary-blue); }
+.green { color: var(--success-green); }
+.yellow { color: var(--warning-yellow); }
+.red { color: var(--danger-red); }
+
+/* Table */
+.table-card {
+  margin-top: 3rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+th {
+  background: linear-gradient(135deg, var(--primary-orange), var(--secondary-blue));
+  color: white;
+  padding: 1.2rem;
+}
+
+td {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+tr:hover {
+  background: linear-gradient(135deg, #FEF3C7, #FEE2E2);
+}
+
+/* Footer */
+.footer-links {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.footer-links a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--secondary-blue);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- Title -->
+  <div class="page-title">
+    <h1>📋 Total Complaints Dashboard</h1>
+    <p>Complete overview of all registered grievances</p>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-grid">
+    <div class="card">
+      <h2>Total Complaints</h2>
+      <div class="metric blue">1,247</div>
+    </div>
+
+    <div class="card">
+      <h2>Resolved</h2>
+      <div class="metric green">978</div>
+    </div>
+
+    <div class="card">
+      <h2>In Progress</h2>
+      <div class="metric yellow">226</div>
+    </div>
+
+    <div class="card">
+      <h2>Escalated</h2>
+      <div class="metric red">43</div>
+    </div>
+  </div>
+
+  <!-- Complaints Table -->
+  <div class="card table-card">
+    <h2>📊 All Complaints List</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Citizen Name</th>
+          <th>Complaint Type</th>
+          <th>Department</th>
+          <th>Priority</th>
+          <th>Status</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>GRV001</td>
+          <td>Atharva Joshi</td>
+          <td>Water Leakage</td>
+          <td>Water Supply</td>
+          <td>P5</td>
+          <td>Resolved</td>
+          <td>03-01-2026</td>
+        </tr>
+        <tr>
+          <td>GRV004</td>
+          <td>Prajakta Raut</td>
+          <td>Garbage Collection</td>
+          <td>Garbage</td>
+          <td>P4</td>
+          <td>In Progress</td>
+          <td>03-01-2026</td>
+        </tr>
+        <tr>
+          <td>GRV006</td>
+          <td>Sunita More</td>
+          <td>Drainage Blocked</td>
+          <td>Drainage</td>
+          <td>P5</td>
+          <td>Escalated</td>
+          <td>03-01-2026</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer-links">
+    <p><a href="ui.html">← Back to Home</a></p>
+  </div>
+
+</div>
+
+</body>
+</html>

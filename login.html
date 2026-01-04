@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | महाशिकायत AI</title>
+
+<style>
+:root {
+  --primary-orange: #F97316;
+  --secondary-blue: #1E40AF;
+  --glass-bg: rgba(255,255,255,0.9);
+  --shadow-glow: 0 15px 40px rgba(249,115,22,0.35);
+  --text-dark: #1E293B;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #F8FAFC, #CBD5E1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Card */
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(25px);
+  padding: 3rem;
+  border-radius: 25px;
+  box-shadow: var(--shadow-glow);
+  border: 1px solid rgba(249,115,22,0.25);
+  animation: floatIn 0.8s ease;
+}
+
+@keyframes floatIn {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Logo */
+.logo {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.logo-icon {
+  font-size: 2.5rem;
+}
+
+.logo h1 {
+  margin: 0;
+  font-size: 2rem;
+  background: linear-gradient(45deg, var(--primary-orange), var(--secondary-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logo p {
+  color: var(--primary-orange);
+  font-weight: 600;
+}
+
+/* Form */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  font-weight: 700;
+  color: var(--text-dark);
+  display: block;
+  margin-bottom: 8px;
+}
+
+input {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 15px;
+  border: 2px solid rgba(249,115,22,0.2);
+  font-size: 1rem;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary-orange);
+  box-shadow: 0 0 15px rgba(249,115,22,0.3);
+}
+
+/* Button */
+.login-btn {
+  width: 100%;
+  padding: 1.2rem;
+  border: none;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: white;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--primary-orange), var(--secondary-blue));
+  box-shadow: var(--shadow-glow);
+  transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+}
+
+/* Footer links */
+.footer {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.footer a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--secondary-blue);
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-card">
+
+  <div class="logo">
+    <div class="logo-icon">🤖</div>
+    <h1>महाशिकायत</h1>
+    <p>AI Grievance Portal</p>
+  </div>
+
+  <form onsubmit="login(event)">
+    <div class="form-group">
+      <label>📧 Email / Mobile</label>
+      <input type="text" required placeholder="example@gmail.com">
+    </div>
+
+    <div class="form-group">
+      <label>🔒 Password</label>
+      <input type="password" required placeholder="••••••••">
+    </div>
+
+    <button class="login-btn">🔐 Login</button>
+  </form>
+
+  <div class="footer">
+    <p>New user? <a href="signup.html">Create Account</a></p>
+    <p><a href="ui.html">← Back to Home</a></p>
+  </div>
+
+</div>
+
+<script>
+function login(e){
+  e.preventDefault();
+  alert("✅ Login Successful!");
+  window.location.href = "ui.html";
+}
+</script>
+
+</body>
+</html>

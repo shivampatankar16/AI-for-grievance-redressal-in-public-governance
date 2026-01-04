@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Live Complaint Tracking | Mahashikayat AI</title>
+
+<style>
+:root {
+  --primary-orange: #F97316;
+  --secondary-blue: #1E40AF;
+  --success-green: #10B981;
+  --warning-yellow: #F59E0B;
+  --text-dark: #1E293B;
+  --text-light: #64748B;
+  --glass-bg: rgba(255,255,255,0.9);
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #F8FAFC, #CBD5E1);
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 3.5rem 1.5rem;
+}
+
+/* Title */
+.title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.title h1 {
+  font-size: 2.6rem;
+  background: linear-gradient(45deg, var(--primary-orange), var(--secondary-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.title p {
+  color: var(--text-light);
+}
+
+/* Card */
+.card {
+  background: var(--glass-bg);
+  border-radius: 25px;
+  padding: 2.5rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  margin-bottom: 2.5rem;
+}
+
+/* Info Grid */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.info-box h4 {
+  margin: 0;
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+.info-box p {
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+/* Status */
+.status {
+  font-weight: 800;
+  padding: 8px 18px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.in-progress {
+  background: var(--warning-yellow);
+  color: #1E293B;
+}
+
+/* Timeline */
+.timeline {
+  margin-top: 2rem;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #CBD5E1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  margin-right: 1rem;
+}
+
+.active {
+  background: var(--primary-orange);
+  color: white;
+}
+
+.done {
+  background: var(--success-green);
+  color: white;
+}
+
+.step-text h4 {
+  margin: 0;
+}
+
+.step-text p {
+  margin: 4px 0 0;
+  color: var(--text-light);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.footer a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--secondary-blue);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- TITLE -->
+  <div class="title">
+    <h1>📍 Live Complaint Tracking</h1>
+    <p>Track your complaint in real-time</p>
+  </div>
+
+  <!-- COMPLAINT DETAILS -->
+  <div class="card">
+    <h3>🧾 Complaint Details</h3>
+
+    <div class="info-grid">
+      <div class="info-box">
+        <h4>Citizen Name</h4>
+        <p>Atharva Joshi</p>
+      </div>
+
+      <div class="info-box">
+        <h4>Complaint ID</h4>
+        <p>GRV001</p>
+      </div>
+
+      <div class="info-box">
+        <h4>Department</h4>
+        <p>Water Supply</p>
+      </div>
+
+      <div class="info-box">
+        <h4>Priority</h4>
+        <p>High (P5)</p>
+      </div>
+
+      <div class="info-box">
+        <h4>Location</h4>
+        <p>Dhantoli, Nagpur</p>
+      </div>
+
+      <div class="info-box">
+        <h4>Current Status</h4>
+        <span class="status in-progress">In Progress</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="card">
+    <h3>⏱️ Complaint Progress Timeline</h3>
+
+    <div class="timeline">
+
+      <div class="step">
+        <div class="circle done">✔</div>
+        <div class="step-text">
+          <h4>Complaint Registered</h4>
+          <p>01 Jan 2026 – Complaint submitted successfully</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="circle done">✔</div>
+        <div class="step-text">
+          <h4>Assigned to Water Department</h4>
+          <p>02 Jan 2026 – Forwarded to department</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="circle active">3</div>
+        <div class="step-text">
+          <h4>Work In Progress</h4>
+          <p>03 Jan 2026 – Repair work started</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="circle">4</div>
+        <div class="step-text">
+          <h4>Complaint Resolved</h4>
+          <p>Expected: 05 Jan 2026</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p><a href="ui.html">← Back to Home</a></p>
+  </div>
+
+</div>
+
+</body>
+</html>

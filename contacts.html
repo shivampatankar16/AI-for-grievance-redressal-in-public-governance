@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | महाशिकायत AI</title>
+
+<style>
+:root {
+  --primary-orange: #F97316;
+  --secondary-blue: #1E40AF;
+  --glass-bg: rgba(255,255,255,0.9);
+  --shadow-glow: 0 15px 40px rgba(249,115,22,0.35);
+  --text-dark: #1E293B;
+  --text-light: #64748B;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #F8FAFC, #CBD5E1);
+}
+
+/* Page Layout */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 4rem 1.5rem;
+}
+
+/* Header */
+.page-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-title h1 {
+  font-size: 2.8rem;
+  background: linear-gradient(45deg, var(--primary-orange), var(--secondary-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.page-title p {
+  color: var(--text-light);
+  font-size: 1.1rem;
+}
+
+/* Grid */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+}
+
+/* Cards */
+.card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(25px);
+  border-radius: 25px;
+  padding: 2.5rem;
+  box-shadow: var(--shadow-glow);
+  border: 1px solid rgba(249,115,22,0.25);
+  animation: floatIn 0.8s ease;
+}
+
+@keyframes floatIn {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.card h2 {
+  margin-bottom: 1.5rem;
+  color: var(--secondary-blue);
+}
+
+/* Info */
+.info-item {
+  margin-bottom: 1.2rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+/* Form */
+.form-group {
+  margin-bottom: 1.3rem;
+}
+
+label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 15px;
+  border: 2px solid rgba(249,115,22,0.2);
+  font-size: 1rem;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary-orange);
+  box-shadow: 0 0 15px rgba(249,115,22,0.3);
+}
+
+/* Button */
+.send-btn {
+  width: 100%;
+  padding: 1.2rem;
+  border: none;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: white;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--primary-orange), var(--secondary-blue));
+  box-shadow: var(--shadow-glow);
+  transition: all 0.3s ease;
+}
+
+.send-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+}
+
+/* Footer */
+.footer-links {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+.footer-links a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--secondary-blue);
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="page-title">
+    <h1>📞 संपर्क करा / Contact Us</h1>
+    <p>We are here to help you with your grievances</p>
+  </div>
+
+  <div class="contact-grid">
+
+    <!-- Contact Info -->
+    <div class="card">
+      <h2>🏢 Office Information</h2>
+      <div class="info-item">📍 Address: Nagpur, Maharashtra, India</div>
+      <div class="info-item">📧 Email: support@mahashikayat.ai</div>
+      <div class="info-item">📞 Phone: +91 98765 43210</div>
+      <div class="info-item">🕘 Working Hours: 9 AM – 6 PM</div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="card">
+      <h2>✉️ Send Message</h2>
+
+      <form onsubmit="sendMessage(event)">
+        <div class="form-group">
+          <label>👤 Name</label>
+          <input type="text" required placeholder="Your name">
+        </div>
+
+        <div class="form-group">
+          <label>📧 Email</label>
+          <input type="email" required placeholder="your@email.com">
+        </div>
+
+        <div class="form-group">
+          <label>💬 Message</label>
+          <textarea rows="5" required placeholder="Write your message..."></textarea>
+        </div>
+
+        <button class="send-btn">🚀 Send Message</button>
+      </form>
+    </div>
+
+  </div>
+
+  <div class="footer-links">
+    <p><a href="ui.html">← Back to Home</a></p>
+  </div>
+
+</div>
+
+<script>
+function sendMessage(e){
+  e.preventDefault();
+  alert("✅ Message sent successfully! We will contact you soon.");
+}
+</script>
+
+</body>
+</html>

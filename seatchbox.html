@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Home | Mahashikayat AI</title>
+
+<style>
+/* ===== BASIC PAGE STYLE ===== */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f8fafc;
+}
+
+/* ===== HEADER ===== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #F97316, #1E40AF);
+  color: white;
+}
+
+header input {
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+/* ===== SEARCH POPUP ===== */
+.search-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.search-box {
+  width: 420px;
+  background: white;
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.search-header {
+  display: flex;
+  gap: 10px;
+}
+
+.search-header input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+}
+
+.search-header span {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#searchResults {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+#searchResults li {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+
+#searchResults li:hover {
+  background: #f1f5f9;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <h2>Mahashikayat AI</h2>
+  <input type="text" placeholder="🔍 Search..." onclick="openSearch()" readonly>
+</header>
+
+<!-- ===== SEARCH POPUP ===== -->
+<div id="searchPopup" class="search-popup">
+  <div class="search-box">
+
+    <div class="search-header">
+      <input type="text" id="searchInput" placeholder="Type to search..." onkeyup="searchData()">
+      <span onclick="closeSearch()">❌</span>
+    </div>
+
+    <ul id="searchResults"></ul>
+
+  </div>
+</div>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+const searchItems = [
+  { name: "Water Department", link: "water-department.html" },
+  { name: "Electricity Department", link: "electricity-department.html" },
+  { name: "Roads Department", link: "roads-department.html" },
+  { name: "Garbage Department", link: "garbage-department.html" },
+  { name: "Drainage Department", link: "drainage-department.html" },
+  { name: "Street Lights Department", link: "street-lights-department.html" },
+  { name: "Healthcare Department", link: "healthcare-department.html" },
+  { name: "Citizen Portal", link: "citizen.html" },
+  { name: "Analytics Dashboard", link: "dashboard.html" },
+  { name: "New Complaint", link: "new-complaint.html" },
+  { name: "Text Complaint", link: "text-complaint.html" },
+  { name: "Voice Complaint", link: "voice-complaint.html" },
+  { name: "Contact Page", link: "contact.html" }
+];
+
+function openSearch() {
+  document.getElementById("searchPopup").style.display = "flex";
+  document.getElementById("searchInput").focus();
+}
+
+function closeSearch() {
+  document.getElementById("searchPopup").style.display = "none";
+  document.getElementById("searchResults").innerHTML = "";
+  document.getElementById("searchInput").value = "";
+}
+
+function searchData() {
+  const input = document.getElementById("searchInput").value.toLowerCase();
+  const results = document.getElementById("searchResults");
+  results.innerHTML = "";
+
+  searchItems
+    .filter(item => item.name.toLowerCase().includes(input))
+    .forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = item.name;
+      li.onclick = () => window.location.href = item.link;
+      results.appendChild(li);
+    });
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transparency Reports | महाशिकायत AI</title>
+
+<style>
+:root {
+  --primary-orange: #F97316;
+  --secondary-blue: #1E40AF;
+  --success-green: #10B981;
+  --warning-yellow: #F59E0B;
+  --danger-red: #EF4444;
+  --glass-bg: rgba(255,255,255,0.9);
+  --shadow-glow: 0 15px 40px rgba(249,115,22,0.35);
+  --text-dark: #1E293B;
+  --text-light: #64748B;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #F8FAFC, #CBD5E1);
+}
+
+/* Layout */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 4rem 1.5rem;
+}
+
+/* Header */
+.page-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-title h1 {
+  font-size: 2.8rem;
+  background: linear-gradient(45deg, var(--primary-orange), var(--secondary-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.page-title p {
+  color: var(--text-light);
+  font-size: 1.1rem;
+}
+
+/* Cards Grid */
+.report-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+/* Card */
+.card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(25px);
+  border-radius: 25px;
+  padding: 2.5rem;
+  box-shadow: var(--shadow-glow);
+  border: 1px solid rgba(249,115,22,0.25);
+  animation: floatIn 0.8s ease;
+}
+
+@keyframes floatIn {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.card h2 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.metric {
+  font-size: 2.8rem;
+  font-weight: 800;
+}
+
+.green { color: var(--success-green); }
+.yellow { color: var(--warning-yellow); }
+.red { color: var(--danger-red); }
+.blue { color: var(--secondary-blue); }
+
+/* Section */
+.section {
+  margin-top: 4rem;
+}
+
+.section h2 {
+  margin-bottom: 1.5rem;
+  color: var(--secondary-blue);
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+th {
+  background: linear-gradient(135deg, var(--primary-orange), var(--secondary-blue));
+  color: white;
+  padding: 1.2rem;
+}
+
+td {
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+tr:hover {
+  background: linear-gradient(135deg, #FEF3C7, #FEE2E2);
+}
+
+/* Footer */
+.footer-links {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.footer-links a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--secondary-blue);
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- Title -->
+  <div class="page-title">
+    <h1>📊 पारदर्शकता अहवाल / Transparency Report</h1>
+    <p>Public grievance performance & accountability report</p>
+  </div>
+
+  <!-- Metrics -->
+  <div class="report-grid">
+    <div class="card">
+      <h2>📋 Total Complaints</h2>
+      <div class="metric blue">1,247</div>
+      <p>All registered grievances</p>
+    </div>
+
+    <div class="card">
+      <h2>✅ Resolved</h2>
+      <div class="metric green">978</div>
+      <p>Resolved successfully</p>
+    </div>
+
+    <div class="card">
+      <h2>⏳ Pending</h2>
+      <div class="metric yellow">269</div>
+      <p>Under processing</p>
+    </div>
+
+    <div class="card">
+      <h2>⚠️ Escalated</h2>
+      <div class="metric red">43</div>
+      <p>High priority cases</p>
+    </div>
+  </div>
+
+  <!-- Department Performance -->
+  <div class="section">
+    <h2>🏢 Department-wise Performance</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Department</th>
+          <th>Total</th>
+          <th>Resolved</th>
+          <th>Pending</th>
+          <th>Avg Days</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Water Supply</td>
+          <td>320</td>
+          <td>280</td>
+          <td>40</td>
+          <td>3.1</td>
+        </tr>
+        <tr>
+          <td>Electricity</td>
+          <td>240</td>
+          <td>215</td>
+          <td>25</td>
+          <td>2.6</td>
+        </tr>
+        <tr>
+          <td>Roads</td>
+          <td>190</td>
+          <td>145</td>
+          <td>45</td>
+          <td>4.2</td>
+        </tr>
+        <tr>
+          <td>Garbage</td>
+          <td>310</td>
+          <td>250</td>
+          <td>60</td>
+          <td>3.8</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Citizen Trust -->
+  <div class="section">
+    <h2>🤝 Citizen Trust Index</h2>
+    <div class="card">
+      <p><strong>Overall Satisfaction:</strong> 4.3 / 5 ⭐⭐⭐⭐☆</p>
+      <p>78% citizens satisfied with grievance resolution</p>
+      <p>92% complaints acknowledged within 24 hours</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer-links">
+    <p><a href="ui.html">← Back to Home</a></p>
+  </div>
+
+</div>
+
+</body>
+</html>

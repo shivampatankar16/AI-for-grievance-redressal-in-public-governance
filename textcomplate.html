@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Text Complaint | महाशिकायत AI</title>
+
+<style>
+:root {
+  --primary-orange: #F97316;
+  --secondary-blue: #1E40AF;
+  --success-green: #10B981;
+  --glass-bg: rgba(255,255,255,0.9);
+  --shadow-glow: 0 15px 40px rgba(249,115,22,0.35);
+  --text-dark: #1E293B;
+  --text-light: #64748B;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #F8FAFC, #CBD5E1);
+}
+
+.container {
+  max-width: 850px;
+  margin: auto;
+  padding: 4rem 1.5rem;
+}
+
+/* Title */
+.page-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-title h1 {
+  font-size: 2.6rem;
+  background: linear-gradient(45deg, var(--primary-orange), var(--secondary-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.page-title p {
+  color: var(--text-light);
+}
+
+/* Card */
+.form-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(25px);
+  border-radius: 25px;
+  padding: 3rem;
+  box-shadow: var(--shadow-glow);
+  border: 1px solid rgba(249,115,22,0.25);
+}
+
+/* Form */
+.form-group {
+  margin-bottom: 1.6rem;
+}
+
+label {
+  font-weight: 700;
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text-dark);
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 15px;
+  border: 2px solid rgba(249,115,22,0.2);
+  font-size: 1rem;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary-orange);
+  box-shadow: 0 0 15px rgba(249,115,22,0.3);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+/* Button */
+.btn {
+  display: block;
+  width: 100%;
+  padding: 1.2rem;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: white;
+  background: linear-gradient(135deg, var(--primary-orange), var(--secondary-blue));
+  box-shadow: var(--shadow-glow);
+  transition: all 0.3s ease;
+  margin-top: 2rem;
+}
+
+.btn:hover {
+  transform: translateY(-4px);
+}
+
+/* Footer */
+.footer-links {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.footer-links a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--secondary-blue);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- Title -->
+  <div class="page-title">
+    <h1>✍️ Text Complaint</h1>
+    <p>Report your complaint clearly using text</p>
+  </div>
+
+  <!-- Form -->
+  <div class="form-card">
+    <form onsubmit="submitTextComplaint(event)">
+
+      <div class="form-group">
+        <label>👤 Citizen Name</label>
+        <input type="text" required placeholder="Enter your full name">
+      </div>
+
+      <div class="form-group">
+        <label>📱 Mobile Number</label>
+        <input type="tel" required placeholder="9876543210">
+      </div>
+
+      <div class="form-group">
+        <label>🏙️ City</label>
+        <select required>
+          <option>Nagpur</option>
+          <option>Mumbai</option>
+          <option>Pune</option>
+          <option>Amravati</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>🏢 Department</label>
+        <select required>
+          <option>Water Supply</option>
+          <option>Electricity</option>
+          <option>Roads</option>
+          <option>Garbage</option>
+          <option>Drainage</option>
+          <option>Street Lights</option>
+          <option>Healthcare</option>
+          <option>Public Safety</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>📍 Location / Area</label>
+        <input type="text" required placeholder="Area / Ward / Landmark">
+      </div>
+
+      <div class="form-group">
+        <label>📝 Complaint Description</label>
+        <textarea required placeholder="Write your complaint in detail..."></textarea>
+      </div>
+
+      <button type="submit" class="btn">
+        🚀 Submit Text Complaint
+      </button>
+
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer-links">
+    <p><a href="ui.html">← Back to Home</a></p>
+  </div>
+
+</div>
+
+<script>
+function submitTextComplaint(e){
+  e.preventDefault();
+  alert(
+    "✅ Text Complaint Submitted Successfully!\n" +
+    "Your Complaint ID: TXT-" + Math.floor(Math.random() * 10000)
+  );
+}
+</script>
+
+</body>
+</html>

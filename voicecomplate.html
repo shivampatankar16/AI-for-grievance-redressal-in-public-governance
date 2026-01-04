@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voice Complaint | महाशिकायत AI</title>
+
+<style>
+:root {
+  --primary-orange: #F97316;
+  --secondary-blue: #1E40AF;
+  --success-green: #10B981;
+  --danger-red: #EF4444;
+  --glass-bg: rgba(255,255,255,0.9);
+  --shadow-glow: 0 15px 40px rgba(249,115,22,0.35);
+  --text-dark: #1E293B;
+  --text-light: #64748B;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #F8FAFC, #CBD5E1);
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 4rem 1.5rem;
+  text-align: center;
+}
+
+/* Title */
+.page-title h1 {
+  font-size: 2.6rem;
+  background: linear-gradient(45deg, var(--primary-orange), var(--secondary-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.page-title p {
+  color: var(--text-light);
+  margin-bottom: 3rem;
+}
+
+/* Card */
+.voice-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(25px);
+  border-radius: 25px;
+  padding: 3rem;
+  box-shadow: var(--shadow-glow);
+  border: 1px solid rgba(249,115,22,0.25);
+}
+
+/* Mic */
+.mic {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+}
+
+.status {
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+/* Buttons */
+.btn {
+  padding: 1rem 2.2rem;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: white;
+  margin: 0.5rem;
+  transition: 0.3s;
+}
+
+.start {
+  background: linear-gradient(135deg, var(--success-green), var(--secondary-blue));
+}
+
+.stop {
+  background: linear-gradient(135deg, var(--danger-red), var(--secondary-blue));
+}
+
+.btn:hover {
+  transform: translateY(-4px);
+}
+
+/* Audio */
+audio {
+  margin-top: 2rem;
+  width: 100%;
+}
+
+/* Footer */
+.footer-links {
+  margin-top: 3rem;
+}
+
+.footer-links a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--secondary-blue);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="page-title">
+    <h1>🎤 Voice Complaint</h1>
+    <p>Allow microphone access and record your complaint</p>
+  </div>
+
+  <div class="voice-card">
+
+    <div class="mic">🎙️</div>
+    <div class="status" id="statusText">
+      Click "Allow & Start Recording"
+    </div>
+
+    <button class="btn start" onclick="startRecording()">
+      🎤 Start Recording
+    </button>
+
+    <button class="btn stop" onclick="stopRecording()" disabled id="stopBtn">
+      ⏹️ Stop Recording
+    </button>
+
+    <audio id="audioPlayback" controls hidden></audio>
+
+  </div>
+
+  <div class="footer-links">
+    <p><a href="ui.html">← Back to Home</a></p>
+  </div>
+
+</div>
+
+<script>
+let mediaRecorder;
+let audioChunks = [];
+
+async function startRecording() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
+    mediaRecorder = new MediaRecorder(stream);
+    audioChunks = [];
+
+    mediaRecorder.ondataavailable = e => {
+      audioChunks.push(e.data);
+    };
+
+    mediaRecorder.onstop = () => {
+      const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+      const audioUrl = URL.createObjectURL(audioBlob);
+      const audio = document.getElementById("audioPlayback");
+      audio.src = audioUrl;
+      audio.hidden = false;
+
+      document.getElementById("statusText").innerText =
+        "✅ Recording completed. Complaint saved (demo).";
+    };
+
+    mediaRecorder.start();
+    document.getElementById("statusText").innerText =
+      "🎙️ Recording... Speak clearly";
+    document.getElementById("stopBtn").disabled = false;
+
+  } catch (err) {
+    alert("❌ Microphone permission denied!");
+  }
+}
+
+function stopRecording() {
+  mediaRecorder.stop();
+  document.getElementById("stopBtn").disabled = true;
+}
+</script>
+
+</body>
+</html>
